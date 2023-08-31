@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/users.model.js'
 import encrypt from '../../config/bcrypt.js'
-import config from './config/config.env.js'
+import config from '../../config/config.env.js'
 const {passHashing, validatePass } =encrypt
 const { SECRET, ADMIN_NAME, ADMIN_MAIL, ADMIN_PASS, ADMIN_ROLL } = config
 

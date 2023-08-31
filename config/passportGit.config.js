@@ -1,15 +1,17 @@
-const passport = require('passport')
-const gitHubStrategy = require('passport-github2').Strategy
-const User = require('../dao/models/modelUser')
+import passport from 'passport'
+import { Strategy as gitHubStrategy } from 'passport-github2'
+import User from '../scr/models/users.model.js'
+import config from './config.env.js'
+const { CLIENT_ID, CLIENT_SECRET, CALLBACK_URL } = config
 
 const initializePassportGit = () => {
     passport.use(
         'gitHubAuth',
         new gitHubStrategy(
             {
-                clientID: 'fcaea0d6522b23ccfb58',
-                clientSecret: 'aa34430276394c4511fcd9beb2edb13907084bc0',
-                callbackURL: 'http://localhost:8080/auth/github/callback'
+                clientID: CLIENT_ID,
+                clientSecret: CLIENT_SECRET,
+                callbackURL: CALLBACK_URL
             }, async (accessToken, refreshToken, profile, done) => {
                 try {
                 if(profile._json.email) {
@@ -33,7 +35,7 @@ const initializePassportGit = () => {
                 }
             }))}
 
-module.exports = initializePassportGit
+export default initializePassportGit
 
 
 

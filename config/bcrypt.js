@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt')
+import bcrypt from 'bcrypt'
 let jumpings = 10
 let createdSalts = bcrypt.genSaltSync(jumpings)
 
@@ -10,4 +10,4 @@ const validatePass = (userPass, hashedPass) => {
     return bcrypt.compareSync(userPass, hashedPass)
 }
 
-module.exports = {passHashing, validatePass}
+export default {passHashing, validatePass}
