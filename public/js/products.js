@@ -53,7 +53,6 @@ const addToCart = async (pid, status, stock) => {
         cartId = await fetchingNewCart()
     }
     let putUrl = `http://localhost:8080/api/carts/${cartId}`
-    console.log(putUrl)
     if(status && stock > 0) {
         let productAdded = await fetchingAddProductToCart(putUrl, pid, qty)
         alert('producto agregado con exito')
