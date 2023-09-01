@@ -14,20 +14,20 @@ import cartRouter from './scr/routers/carts.router.js'
 import viewsRouter from './scr/routers/views.router.js'
 import authRouter from './scr/routers/auth.router.js'
 import githubRouter from './scr/routers/github.router.js'
-import __dirname from './config/utils.js'
+import __dirname from './utils.js'
 const app = express()
 const server = http.createServer(app)
 const { PORT, MONGO_URL, SECRET } = config
 
 //middleware de archivos estaticos publicos, JSON y encoding
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(`${__dirname}/public`))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 //Configuracion de Handlebars
 app.engine('handlebars', handlebars.engine())
 app.set('view engine', 'handlebars')
-app.set('views', __dirname + '/views')
+app.set('views', `${__dirname}/views`)
 
 //Configuración de express session y almacenamiento en MongoDB
 app.use(cookieParser())

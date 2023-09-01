@@ -49,14 +49,11 @@ const authLoginService = async (user) => {
         }
         if(foundUser.length > 0) {
             if(isValidPass) {
-                req.session.userMail = foundUser[0].userMail
-                req.session.userName = foundUser[0].userName
-                req.session.lastName = foundUser[0].lastName || ' '
-                req.session.userRoll = foundUser[0].userRoll
                 let token = jwt.sign({email: userMail, password: userPassword},
                     SECRET,
                     {expiresIn:'24h'})
-                return token
+                let userInfo = {token: token, foundUser: foundUser}
+                return userInfo
             } else throw new Error('El usuario no es valido')
         }else throw new Error('El usuario no se encuentra registrado')
         

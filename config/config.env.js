@@ -1,8 +1,8 @@
 import dotenv from 'dotenv'
-import __dirname from './utils.js'
+import __dirname from '../utils.js'
 
 dotenv.config({
-    path: `${__dirname}/../.env.develop`
+    path: `${__dirname}/.env.develop`
 })
 
 export default {
